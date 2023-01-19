@@ -7,7 +7,11 @@ const props = defineProps({
 <template>
   <div class="collection-card">
     <div>
-      <img class="card-image" />
+      <RouterLink
+        :to="{ name: 'collection', params: { id: props.collection.id } }"
+      >
+        <img class="card-image" src="https://via.placeholder.com/450" />
+      </RouterLink>
     </div>
 
     <div class="card-description">
