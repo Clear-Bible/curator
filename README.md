@@ -1,14 +1,8 @@
-# curator
+# ClearCurator
 
-This template should help get you started developing with Vue 3 in Vite.
+A prototyping playground for ideas related to curation. 
 
-## Recommended IDE Setup
-
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+[View online](https://transcendent-axolotl-fa8733.netlify.app/).
 
 ## Project Setup
 
@@ -39,3 +33,7 @@ npm run test:unit
 ```sh
 npm run lint
 ```
+
+## Recommended IDE Setup
+
+[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
