@@ -1,5 +1,5 @@
 <script setup>
-import { RouterLink, RouterView } from "vue-router";
+import { RouterLink, RouterView, useRouter } from "vue-router";
 </script>
 
 <template>
@@ -16,7 +16,27 @@ import { RouterLink, RouterView } from "vue-router";
     </div>
   </header>
 
-  <RouterView />
+  <Suspense timeout="1">
+    <RouterView />
+  </Suspense>
+  <!-- <RouterView v-slot="{ Component }"> -->
+  <!--   <template v-if="Component"> -->
+  <!--     <Transition mode="out-in"> -->
+  <!--       <KeepAlive> -->
+  <!--         <Suspense> -->
+  <!-- main content -->
+  <!-- <template #default> -->
+  <!-- <component :is="Component"></component> -->
+  <!-- </template> -->
+  <!-- loading state -->
+  <!-- <template #fallback> -->
+  <!--   <component :is="Spinner"></component> -->
+  <!-- </template> -->
+  <!--         </Suspense> -->
+  <!--       </KeepAlive> -->
+  <!--     </Transition> -->
+  <!--   </template> -->
+  <!-- </RouterView> -->
 </template>
 
 <style scoped>
@@ -34,6 +54,7 @@ nav.header-nav {
   display: flex;
   gap: 16px;
 }
+
 /* @media (min-width: 1024px) { */
 /*   header { */
 /*     display: flex; */

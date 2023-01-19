@@ -1,12 +1,15 @@
 <script setup>
 import CollectionCard from "./CollectionCard.vue";
+import queries from "../data/queries";
 
-const collections = [
-  { id: 1, name: "SIL", itemCount: 22 },
-  { id: 2, name: "Museum of the Bible", itemCount: 42 },
-  { id: 3, name: "UBS", itemCount: 3 },
-  { id: 4, name: "unfoldingWord", itemCount: 7 },
-];
+// const collections = [
+//   { id: 1, name: "SIL", itemCount: 22 },
+//   { id: 2, name: "Museum of the Bible", itemCount: 42 },
+//   { id: 3, name: "UBS", itemCount: 3 },
+//   { id: 4, name: "unfoldingWord", itemCount: 7 },
+// ];
+
+const collections = await queries.local.getCollections();
 </script>
 
 <template>
