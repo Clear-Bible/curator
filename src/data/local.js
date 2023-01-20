@@ -9,9 +9,10 @@ const entropy = Math.floor(Math.random() * 1000 + 1);
 
 export const getCollectionsLocal = async () => {
   console.info("Getting LOCAL Collections");
+  // await new Promise((resolve) => setTimeout(resolve, 800));
   // if (entropy % 3 === 0) {
   //   console.error("Chaos monkey was activated.");
-  //   return Promise.reject();
+  //   return Promise.reject("Chaos monkey was activated.");
   // }
 
   return Promise.resolve(collections);
@@ -19,11 +20,11 @@ export const getCollectionsLocal = async () => {
 
 export const getCollectionLocal = async (id) => {
   console.info(`Getting LOCAL Collection: ${id}`);
-  // await new Promise((resolve) => setTimeout(resolve, 3000));
+  await new Promise((resolve) => setTimeout(resolve, 800));
 
   if (entropy % 3 === 0) {
     console.error("Chaos monkey was activated.");
-    return Promise.reject();
+    return Promise.reject("Chaos monkey was activated.");
   }
 
   return Promise.resolve(

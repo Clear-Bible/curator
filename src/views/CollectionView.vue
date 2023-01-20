@@ -1,32 +1,33 @@
 <script setup>
-import { ref } from "vue";
+import { ref, reactive, nextTick } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import queries from "../data/queries";
 import Spinner from "../components/Spinner.vue";
 
-const error = ref(false);
-const loading = ref(false);
+const isErrored = ref(false);
+const isLoading = ref(false);
+const errorMessage = ref(null);
 
 const route = useRoute();
 const router = useRouter();
 
-let collection = null;
+const collection = reactive({});
 
-const loadCollection = async (id) => {
-  console.log("Loading collection...");
-  try {
-    loading.value = true;
-    console.log("loading?", loading.value);
-    collection = await queries.local.getCollection(id);
-    loading.value = false;
-  } catch (err) {
-    console.log("catch");
-    loading.value = false;
-    error.value = true;
-  }
-};
+isLoading.value = true;
 
-await loadCollection(route.params.id);
+nextTick().then(() => {
+  queries.local
+    .getCollection(route.params.id)
+    .then((result) => {
+      collection.value = result;
+      isLoading.value = false;
+    })
+    .catch((error) => {
+      isLoading.value = false;
+      isErrored.value = true;
+      errorMessage.value = error;
+    });
+});
 
 const reloadPage = () => {
   router.go(0);
@@ -34,7 +35,7 @@ const reloadPage = () => {
 </script>
 
 <template>
-  <template v-if="error">
+  <template v-if="isErrored">
     <div class="error">
       <h1>Apologies!</h1>
       <p>
@@ -42,21 +43,22 @@ const reloadPage = () => {
         <span class="error-message">went wrong</span>
         loading data for this collection. The error appears to be:
       </p>
+      <p>{{ errorMessage }}</p>
       <button @click="reloadPage">Try Again</button>
     </div>
   </template>
 
-  <template v-if="loading">
-    <p>Loading...</p>
+  <template v-if="isLoading">
+    <Spinner />
   </template>
 
-  <template v-if="!error && !loading">
-    <h1>The {{ collection.name }} collection</h1>
+  <template v-if="!isErrored && !isLoading && collection.value.id">
+    <h1>The {{ collection.value.name }} collection</h1>
 
     <ul>
-      <li>id: {{ route.params.id }}</li>
-      <li>name: {{ collection.name }}</li>
-      <li>count: {{ collection.itemCount }}</li>
+      <li>id: {{ collection.value.id }}</li>
+      <li>name: {{ collection.value.name }}</li>
+      <li>count: {{ collection.value.itemCount }}</li>
     </ul>
   </template>
 </template>
