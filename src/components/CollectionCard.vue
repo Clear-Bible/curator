@@ -35,6 +35,7 @@ const props = defineProps({
 .card-image {
   width: 100%;
   display: block;
+  border-radius: 8px;
 }
 
 .card-description {
