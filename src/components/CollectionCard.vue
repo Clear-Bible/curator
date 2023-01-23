@@ -15,11 +15,12 @@ const props = defineProps({
     </div>
 
     <div class="card-description">
-      <span>
+      <div class="card-name">
         {{ props.collection.name }}
-      </span>
-
-      <span> ( {{ props.collection.itemCount }} ) </span>
+        <div>
+          <div class="card-count">{{ props.collection.itemCount }} items</div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -27,10 +28,22 @@ const props = defineProps({
 <style scoped>
 .collection-card {
   width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .card-image {
   width: 100%;
   display: block;
+}
+
+.card-description {
+  margin-top: 8px;
+  padding-right: 4px;
+  text-align: right;
+}
+
+.card-count {
+  font-size: 12px;
 }
 </style>

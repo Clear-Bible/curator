@@ -35,6 +35,5 @@ const collections = await queries.local.getCollections();
   flex: 1;
   aspect-ratio: 1 / 1;
   min-width: 275px;
-  border: 1px solid var(--color-text);
 }
 </style>
