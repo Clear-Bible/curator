@@ -1,6 +1,6 @@
 # ClearCurator
 
-A prototyping playground for ideas related to curation. 
+A front-end curation envirionment. Servers as a prototyping playground for ideas related to curation. 
 
 [View online](https://transcendent-axolotl-fa8733.netlify.app/).
 
